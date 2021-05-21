@@ -109,7 +109,8 @@ class _Tela_cadastroState extends State<Tela_cadastro> {
             textFieldok((c) {}, "Digite a Cidade", _controllerCidade),
             textFieldok((c) {}, "Digite o Bairro", _controllerBairro),
             textFieldok((c) {}, "Digite o Numero", _controllerNumero),
-            if (_controllerSenha.text != _controllerSenha2.text)
+            textFieldok((c) { alterTexto();}, "Digite a Senha", _controllerSenha),
+            textFieldok((c) {alterTexto();}, "Repita a Senha", _controllerSenha2),
               Padding(
                 padding: const EdgeInsets.fromLTRB(10, 05, 0, 0),
                 child: Text(
@@ -117,15 +118,15 @@ class _Tela_cadastroState extends State<Tela_cadastro> {
                   style: TextStyle(fontSize: 15, color: Colors.red),
                 ),
               ),
-            textFieldok((c) { alterTexto();}, "Digite a Senha", _controllerSenha),
-            textFieldok((c) {alterTexto();}, "Repita a Senha", _controllerSenha2),
 
             Center(
               child: ElevatedButton(
                 onPressed: () {
                   setState(() {
                     if (_controllerSenha.text != _controllerSenha2.text){
-                      texto = "As senhas não são iguais";
+                      setState(() {
+                        texto = "As senhas não são iguais";
+                      });
                     }
                   });
                   if(texto == "" && textEmail == ""){
